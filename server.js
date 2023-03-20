@@ -1,22 +1,17 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
+const cTable = require('console.table');
 const PORT = process.env.PORT || 3002;
 
-
-// Connect to database
 const db = mysql.createConnection(
   {
     host: '127.0.0.1',
-    // MySQL username,
     user: 'root',
-    // TODO: Add MySQL password
     password: 'password',
     database: 'employee_db'
   },
   console.log(`Connected to the books_db database.`)
 );
-
-// db.query()
 
 const startQuestions = () => {
   inquirer.prompt([
