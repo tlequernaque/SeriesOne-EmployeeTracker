@@ -9,9 +9,12 @@ const db = mysql.createConnection(
     user: 'root',
     password: 'password',
     database: 'employee_db'
-  },
-  console.log(`Connected to the employee_db database.`)
-);
+  })
+db.connect(function(){
+
+    console.log(`Connected to the employee_db database.`)
+    startQuestions()
+})
 
 const startQuestions = () => {
   inquirer.prompt([
@@ -31,7 +34,11 @@ const startQuestions = () => {
     },
   ])
   .then((response) => {
-    
+   switch(response.type){
+    case "View All Employees":
+        viewAllEmp();
+        break;
+   }
   })
 };
 
@@ -52,7 +59,7 @@ const addEmployee = () =>{
          name: 'EmployeeRole',
          message: 'What is the role of the employee?',
          choices: [
-            'Sales Lead', 
+            {name:'Sales Lead', value:1}
             'Salesperson', 
             'Lead Engineer',
             'Software Engineer',
@@ -77,7 +84,11 @@ const addEmployee = () =>{
         }
     ])
     .then((response) => {
-    
+        db.query(`INSERT INTO employee ( first_name, last_name, role_id, manager_id)
+        VALUES (${response.firstName},${response.lastName},),`,function(err,data){
+            if(err) throw err;
+            console.log(data)
+        })
     })
 }
 
