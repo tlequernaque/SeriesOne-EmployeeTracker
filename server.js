@@ -3,13 +3,7 @@ const inquirer = require('inquirer');
 const cTable = require('console.table');
 const PORT = process.env.PORT || 3002;
 
-const db = mysql.createConnection(
-  {
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'password',
-    database: 'employee_db'
-  })
+
 db.connect(function(){
 
     console.log(`Connected to the employee_db database.`)
@@ -36,7 +30,22 @@ const startQuestions = () => {
   .then((response) => {
    switch(response.type){
     case "View All Employees":
-        viewAllEmp();
+        viewAllEmployess();
+        break;
+    case "View All Roles":
+        viewAllRoles();
+        break;
+    case "View All Departments":
+        viewAllDepartments();
+        break;
+    case "Add Employee":
+        addEmployee();
+        break;
+    case "Add Department":
+        addDepartment();
+        break;
+    case "Add Role":
+        addRole();
         break;
    }
   })
@@ -59,33 +68,33 @@ const addEmployee = () =>{
          name: 'EmployeeRole',
          message: 'What is the role of the employee?',
          choices: [
-            {name:'Sales Lead', value:1}
-            'Salesperson', 
-            'Lead Engineer',
-            'Software Engineer',
-            'Account Manager',
-            'Accountant', 
-            'Legal Team Lead',
-            'Lawyer'],
+            {name:'Sales Lead', value:1},
+            {name:'Salesperson',value:2}, 
+            {name:'Lead Engineer', value:3},
+            {name:'Software Engineer',value:4},
+            {name:'Account Manager',value:5},
+            {name:'Accountant',value:6}, 
+            {name:'Legal Team Lead',value:7},
+            {name:'Lawyer', value:8}],
         },
         {
          type: 'list',
          name: 'employeeManager',
          message: 'Who is the manager of the employee?',
          choices: [
-            'John Doe', 
-            'Mike Chan', 
-            'Ashley Rodriguez',
-            'Kevin Tupik',
-            'Kunal Singh',
-            'Malia Brown', 
-            'Sarah Lourd',
-            'Tom Allen'],
+            {name:'John Doe', value:1},
+            {name:'Mike Chan', value:2}, 
+            {name:'Ashley Rodriguez', value:3},
+            {name:'Kevin Tupik', value:4},
+            {name:'Kunal Singh', value:5},
+            {name:'Malia Brown', value:6}, 
+            {name:'Sarah Lourd', value:1},
+            {name:'Tom Allen', value:1}],
         }
     ])
     .then((response) => {
         db.query(`INSERT INTO employee ( first_name, last_name, role_id, manager_id)
-        VALUES (${response.firstName},${response.lastName},),`,function(err,data){
+        VALUES (${response.firstName},${response.lastName},${response.role.Id}, ${response.managerId}),`,(err,data) =>{
             if(err) throw err;
             console.log(data)
         })
@@ -101,7 +110,11 @@ const addDepartment = () =>{
         },
     ])
     .then((response) => {
-    
+        db.query(`INSERT INTO department (name)
+        VALUES (${response.name}),`,(err,data) =>{
+            if(err) throw err;
+            console.log(data)
+        })
     })
 }
 
@@ -130,6 +143,11 @@ const addRole = () =>{
         },
     ])
     .then((response) => {
+        db.query(`INSERT INTO role ( title, salary,)
+        VALUES (${response.title},${response.salary}),`,(err,data) =>{
+            if(err) throw err;
+            console.log(data)
+        })
     
     })
-}
+};
