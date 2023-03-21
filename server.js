@@ -15,7 +15,7 @@ const startQuestions = () => {
         name: 'type',
         message: 'What would you like to do?',
         choices: [
-            'View All Employess', 
+            'View All Employees', 
             'Add Employee', 
             'Update Employee Role',
             'View All Roles',
@@ -28,6 +28,7 @@ const startQuestions = () => {
   .then((response) => {
    switch(response.type){
     case "View All Employees":
+        console.log("inside case 'View All Employees");
         viewAllEmployess();
         break;
     case "View All Roles":
@@ -56,7 +57,7 @@ const startQuestions = () => {
         console.table(dept);
     })
     .then(() => startQuestions());
- }
+    }
     function viewAllRoles() {
         db.getAllRoles()
         .then (([role]) => {
@@ -65,7 +66,17 @@ const startQuestions = () => {
         })
         .then(() => startQuestions());
 
-}
+    }
+    function viewAllEmployess() {
+        console.log("In function viewAllEmployess");
+        db.getAllEmpls()
+        .then (([role]) => {
+            console.log ('`\n');
+            console.table(role);
+        })
+        .then(() => startQuestions());
+
+    }
 
 const addEmployee = () =>{
     inquirer.prompt ([
