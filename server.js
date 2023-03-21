@@ -56,6 +56,15 @@ const startQuestions = () => {
         console.table(dept);
     })
     .then(() => startQuestions());
+ }
+    function viewAllRoles() {
+        db.getAllRoles()
+        .then (([role]) => {
+            console.log ('`\n');
+            console.table(role);
+        })
+        .then(() => startQuestions());
+
 }
 
 const addEmployee = () =>{
