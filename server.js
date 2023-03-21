@@ -2,13 +2,11 @@ const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 const PORT = process.env.PORT || 3002;
+const db = require("./db/DBAccess")
 
 
-db.connect(function(){
-
-    console.log(`Connected to the employee_db database.`)
     startQuestions()
-})
+
 
 const startQuestions = () => {
   inquirer.prompt([
@@ -50,6 +48,15 @@ const startQuestions = () => {
    }
   })
 };
+
+const viewAllDepartments() {
+    db.getAllDepts()
+    .then (([dept]) => {
+        console.log ('`\n');
+        console.table(dept);
+    })
+    .then(() => startQuestions());
+}
 
 const addEmployee = () =>{
     inquirer.prompt ([
