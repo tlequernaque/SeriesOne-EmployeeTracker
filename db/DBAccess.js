@@ -7,7 +7,7 @@ class DBAccess {
     }
 
     getAllDepts() {
-        return this.db.promise.query(
+        return this.db.promise().query(
             "SELECT department.id, department.name FROM department;"
         )
     }

@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3002;
 const db = require("./db/DBAccess")
 
 
-    startQuestions()
+
 
 
 const startQuestions = () => {
@@ -49,7 +49,7 @@ const startQuestions = () => {
   })
 };
 
-const viewAllDepartments() {
+ function viewAllDepartments() {
     db.getAllDepts()
     .then (([dept]) => {
         console.log ('`\n');
@@ -158,3 +158,5 @@ const addRole = () =>{
     
     })
 };
+
+startQuestions();
