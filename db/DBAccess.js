@@ -12,3 +12,5 @@ class DBAccess {
         )
     }
 }
+
+module.exports = new DBAccess ( db);
