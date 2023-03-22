@@ -4,10 +4,6 @@ const cTable = require('console.table');
 const PORT = process.env.PORT || 3002;
 const db = require("./db/DBAccess")
 
-
-
-
-
 const startQuestions = () => {
   inquirer.prompt([
     {
@@ -50,33 +46,33 @@ const startQuestions = () => {
   })
 };
 
- function viewAllDepartments() {
+function viewAllDepartments() {
     db.getAllDepts()
     .then (([dept]) => {
         console.log ('`\n');
         console.table(dept);
     })
     .then(() => startQuestions());
-    }
-    function viewAllRoles() {
-        db.getAllRoles()
-        .then (([role]) => {
-            console.log ('`\n');
-            console.table(role);
-        })
-        .then(() => startQuestions());
+};
 
-    }
-    function viewAllEmployess() {
-        console.log("In function viewAllEmployess");
-        db.getAllEmpls()
-        .then (([role]) => {
-            console.log ('`\n');
-            console.table(role);
-        })
-        .then(() => startQuestions());
+function viewAllRoles() {
+    db.getAllRoles()
+    .then (([role]) => {
+        console.log ('`\n');
+        console.table(role);
+    })
+    .then(() => startQuestions());
+};
 
-    }
+function viewAllEmployess() {
+    console.log("In function viewAllEmployess");
+    db.getAllEmpls()
+    .then (([role]) => {
+        console.log ('`\n');
+        console.table(role);
+    })
+    .then(() => startQuestions());
+};
 
 const addEmployee = () =>{
     inquirer.prompt ([
@@ -133,7 +129,7 @@ const addDepartment = () =>{
         {
          type: 'input',
          Name:  'departmentName',
-         message: 'What is the name of theh department?'
+         message: 'What is the name of the department?'
         },
     ])
     .then((response) => {
