@@ -128,7 +128,7 @@ const addDepartment = () =>{
     inquirer.prompt ([
         {
          type: 'input',
-         Name:  'departmentName',
+         name:  'departmentName',
          message: 'What is the name of the department?'
         },
     ])
@@ -145,12 +145,12 @@ const addRole = () =>{
     inquirer.prompt ([
         {
          type: 'input',
-         Name:  'roleName',
+         name:  'roleName',
          message: 'What is the name of the role?'
         },
         {
          type: 'input',
-         Name:  'roleSalery',
+         name:  'roleSalery',
          message: 'What is the salery of the role?'
         },
         {
