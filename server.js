@@ -78,12 +78,12 @@ const addEmployee = () =>{
     inquirer.prompt ([
         {
          type: 'input',
-         Name:  'firstName',
+         name:  'firstName',
          message: 'What is the first name of the employee?'
         },
         {
          type: 'input',
-         Name:  'firstName',
+         name:  'lastName',
          message: 'What is the last name of the employee?'
         },
         {
@@ -117,7 +117,7 @@ const addEmployee = () =>{
     ])
     .then((response) => {
         db.query(`INSERT INTO employee ( first_name, last_name, role_id, manager_id)
-        VALUES (${response.firstName},${response.lastName},${response.role.Id}, ${response.managerId}),`,(err,data) =>{
+        VALUES (${response.firstName},${response.lastName},${response.role_id}, ${response.manager_id}),`,(err,data) =>{
             if(err) throw err;
             console.log(data)
         })
