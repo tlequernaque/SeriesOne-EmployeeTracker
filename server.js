@@ -135,7 +135,7 @@ const addDepartment = () =>{
     ])
     .then((response) => {
         db.connection.query(`INSERT INTO department (name)
-        VALUES (${response.name}),`,(err,data) =>{
+        VALUES (${response.departmentName})`,(err,data) =>{
             if(err) throw err;
             console.log(data)
         })
@@ -151,7 +151,7 @@ const addRole = () =>{
         },
         {
          type: 'input',
-         name:  'roleSalery',
+         name:  'roleSalary',
          message: 'What is the salery of the role?'
         },
         {
@@ -168,7 +168,7 @@ const addRole = () =>{
     ])
     .then((response) => {
         db.connection.query(`INSERT INTO role ( title, salary,)
-        VALUES (${response.title},${response.salary}),`,(err,data) =>{
+        VALUES (${response.roleName},${response.roleSalary})`,(err,data) =>{
             if(err) throw err;
             console.log(data)
         })
