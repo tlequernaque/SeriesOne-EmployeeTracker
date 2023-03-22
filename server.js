@@ -116,10 +116,11 @@ const addEmployee = () =>{
         }
     ])
     .then((response) => {
-        db.query(`INSERT INTO employee ( first_name, last_name, role_id, manager_id)
-        VALUES (${response.firstName},${response.lastName},${response.role_id}, ${response.manager_id}),`,(err,data) =>{
+        db.connection.query(`INSERT INTO employee ( first_name, last_name, role_id, manager_id)
+        VALUES ('${response.firstName}','${response.lastName}',${response.EmployeeRole}, ${response.employeeManager})`,(err,data) =>{
             if(err) throw err;
             console.log(data)
+            viewAllEmployess()
         })
     })
 }
@@ -133,7 +134,7 @@ const addDepartment = () =>{
         },
     ])
     .then((response) => {
-        db.query(`INSERT INTO department (name)
+        db.connection.query(`INSERT INTO department (name)
         VALUES (${response.name}),`,(err,data) =>{
             if(err) throw err;
             console.log(data)
@@ -166,7 +167,7 @@ const addRole = () =>{
         },
     ])
     .then((response) => {
-        db.query(`INSERT INTO role ( title, salary,)
+        db.connection.query(`INSERT INTO role ( title, salary,)
         VALUES (${response.title},${response.salary}),`,(err,data) =>{
             if(err) throw err;
             console.log(data)
