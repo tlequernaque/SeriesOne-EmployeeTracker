@@ -132,12 +132,14 @@ const addDepartment = () =>{
          name:  'departmentName',
          message: 'What is the name of the department?'
         },
+        
     ])
     .then((response) => {
         db.connection.query(`INSERT INTO department (name)
-        VALUES (${response.departmentName})`,(err,data) =>{
+        VALUES ('${response.departmentName}')`,(err,data) =>{
             if(err) throw err;
             console.log(data)
+            viewAllEmployess()
         })
     })
 }
@@ -156,7 +158,7 @@ const addRole = () =>{
         },
         {
          type: 'list',
-         name: 'role department',
+         name: 'roleDepartment',
          message: 'Which department does the role belong to?',
          choices: [
             'Engineering', 
@@ -168,9 +170,10 @@ const addRole = () =>{
     ])
     .then((response) => {
         db.connection.query(`INSERT INTO role ( title, salary,)
-        VALUES (${response.roleName},${response.roleSalary})`,(err,data) =>{
+        VALUES ('${response.roleName}','${response.roleSalary}')`,(err,data) =>{
             if(err) throw err;
             console.log(data)
+            .then(() => startQuestions());
         })
     
     })
