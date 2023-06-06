@@ -3,14 +3,21 @@ require('dotenv').config();
 
 // connect to database
 const db = mysql2.createConnection(
-  {
-    host: process.env.DB_HOST_NAME,
-    user: 'root',
-    password: process.env.DB_PASSWORD,
-    database: 'employee_db'
-  },
-  console.log(`Connected to the employee_db database.`)
-);
+    {
+        host: '127.0.0.1',
+        user: 'root',
+        password: 'password',
+        database: 'employee_db'
+    });
 
+    db.connect(function(error){
+        
+        console.log(`Connected to the employee_db database.`)
+        //startQuestions()
+        if (error) {
+            throw error;
+        }
+    });
+ 
 //  export database
 module.exports = db;
