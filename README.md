@@ -10,7 +10,7 @@ This application is a backend solution for managing a company's employees using 
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Demo](#demo)
+- [Link](#link)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [License](#license)
@@ -28,29 +28,21 @@ B. To make any edits on the backend before initializing:
 1. Log in to MySQL by using the command: mysql -u root -p
     - When prompted, enter your password for MySQL
 2. SHOW DATABASES; --> will show all of your MySQL databases; USE employees_db (this database)
-3. While in MySQL, you can edit the seeds.sql file to quickly personalize your app insead of deleting the dummy data while in the app
-4. Be sure to use the command: source db/schema.sql and source db/seeds.sql to update your changes before running the app
+3. In Mysql command: source db/schema.sql and source db/seeds.sql to update your changes before running the app
 
 
 ## Usage (Instructions/How-To Use)
 To use this application, go through the necessary installation requirements (installation procees A, listed above, is required). Once completed, use the terminal to initialize the application; command: npm start (or node server).  
-Follow the prompts and when finsihed, choose the exit option to quit the app. 
+Follow the prompts and when finished, choose the end option to quit the app. 
 
-## Demo
-Full Demo: <a href="https://vimeo.com/810746221">Video</a>
-
-<!-- in the parentheses is just the relative path to the screenshot-->
-![Demo GIF](./assets/FullDemoVid.gif)
+## Link
+[Click Here](https://drive.google.com/file/d/13KadY20PfFWXU9hjYRmsd25BQ21Qvz5k/view) to go to the video link.
 
 
 ## Screenshots
-Intro Prompt: ![Screenshot 1](./assets/screenshot1.png)  
+Intro Prompt: ![Screenshot 1](./assets/introPrompt.png)  
   
-View all Departments, Roles, Employees: ![Screenshot 2](./assets/screenshot2.png)  
-
-Add new Department, Role, Employee: ![Screenshot 3](/assets/screenshot3.png)  
-
-Update Employee Role, Delete Employee, End: ![Screenshot 4](./assets/screenshot5.png)
+View all Departments, Roles, Employees: ![Screenshot 2](./assets/viewAll.png)  
 
 
 ## Technologies
