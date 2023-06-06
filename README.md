@@ -36,7 +36,7 @@ To use this application, go through the necessary installation requirements (ins
 Follow the prompts and when finished, choose the end option to quit the app. 
 
 ## Link
-[Click Here](https://drive.google.com/file/d/13KadY20PfFWXU9hjYRmsd25BQ21Qvz5k/view) to go to the video link.
+[Click Here](https://drive.google.com/file/d/16VzeqPHDV4Mi03BxPJA6nhm6lFIM0rKS/view) to go to the video link.
 
 
 ## Screenshots
