@@ -8,16 +8,11 @@ const db = mysql2.createConnection(
         user: 'root',
         password: 'password',
         database: 'employee_db'
-    });
+    },
+    console.log(`Connected to the employee_db database.`)
+);
 
-    db.connect(function(error){
-        
-        console.log(`Connected to the employee_db database.`)
-        //startQuestions()
-        if (error) {
-            throw error;
-        }
-    });
+
  
 //  export database
 module.exports = db;
